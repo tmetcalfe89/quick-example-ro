@@ -124,11 +124,11 @@
         event.preventDefault();
 
         // Gather the data to send off to the backend.
-        const id = $("updateId").val();
+        const id = $("#updateId").val();
         const body = {
-          title: $("updateTitle").val(),
-          price: $("updatePrice").val(),
-          brand: $("updateBrand").val(),
+          title: $("#updateTitle").val(),
+          price: $("#updatePrice").val(),
+          brand: $("#updateBrand").val(),
         };
 
         // Request the backend to update the product.
@@ -142,6 +142,8 @@
 
             // Add the new row for the updated product to the table body.
             buildRow(response);
+
+            $("updateModal").modal("toggle");
           },
         });
       }
@@ -266,6 +268,7 @@
           </div>
           <div class="modal-body">
             <form>
+              <input type="hidden" id="updateId" />
               <div class="mb-3">
                 <label for="updateTitle" class="form-label">Title</label>
                 <input
